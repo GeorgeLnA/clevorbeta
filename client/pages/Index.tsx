@@ -1,12 +1,44 @@
 import Spline from '@splinetool/react-spline';
 import { HeroScrollDemo } from '@/components/ui/demo';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function Index() {
   const [isPreloaded, setIsPreloaded] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
   const [showCurtain, setShowCurtain] = useState(false);
   const [showMainContent, setShowMainContent] = useState(false);
+  const [visibleSections, setVisibleSections] = useState(new Set());
+
+  const heroRef = useRef(null);
+  const cryptoPayRef = useRef(null);
+
+  // Intersection Observer for lazy loading Spline animations
+  const observerCallback = useCallback((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setVisibleSections(prev => new Set([...prev, entry.target.dataset.section]));
+      } else {
+        // Remove from visible sections when not in view to free up resources
+        setVisibleSections(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(entry.target.dataset.section);
+          return newSet;
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: '100px', // Start loading 100px before section comes into view
+      threshold: 0.1
+    });
+
+    if (heroRef.current) observer.observe(heroRef.current);
+    if (cryptoPayRef.current) observer.observe(cryptoPayRef.current);
+
+    return () => observer.disconnect();
+  }, [observerCallback, showMainContent]);
 
   useEffect(() => {
     // Show loading animation first
@@ -68,19 +100,32 @@ export default function Index() {
       
       {showMainContent && (
         <div className="min-h-screen bg-white">
-        {/* Progressive loading - preload all scenes to prevent freezes */}
+        {/* Optimized preloading - only preload what's needed */}
         <div className="fixed inset-0 z-[-1] opacity-0 pointer-events-none">
-          {/* Preload all scenes simultaneously to eliminate freezes */}
-          <Spline scene="https://prod.spline.design/8wPfo43v95uamovu/scene.splinecode" />
-          <Spline scene="https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode" />
-          <Spline scene="https://prod.spline.design/v-vvo7sbJoCnGdsX/scene.splinecode" />
+          {/* Only preload the loading scene initially */}
+          {!showMainContent && (
+            <Spline scene="https://prod.spline.design/v-vvo7sbJoCnGdsX/scene.splinecode" />
+          )}
         </div>
 
         {/* Hero Section with Spline */}
-        <section className="relative bg-clevor-grey-95 h-screen flex flex-col items-center justify-center overflow-hidden">
-          {/* Spline 3D Scene */}
+        <section
+          ref={heroRef}
+          data-section="hero"
+          className="relative bg-clevor-grey-95 h-screen flex flex-col items-center justify-center overflow-hidden"
+        >
+          {/* Spline 3D Scene - Only load when visible */}
           <div className="absolute inset-0 w-full h-full">
-            <Spline scene="https://prod.spline.design/8wPfo43v95uamovu/scene.splinecode" />
+            {visibleSections.has('hero') ? (
+              <Spline
+                scene="https://prod.spline.design/8wPfo43v95uamovu/scene.splinecode"
+                onLoad={() => console.log('Hero Spline loaded')}
+              />
+            ) : (
+              <div className="w-full h-full bg-clevor-grey-95 flex items-center justify-center">
+                <div className="text-clevor-persian-blue text-xl">Loading 3D Scene...</div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -97,10 +142,21 @@ export default function Index() {
       </section>
 
       {/* Pay With Crypto Section - Moved from bottom */}
-      <section className="relative bg-white h-screen flex items-center justify-center overflow-hidden">
+      <section
+        ref={cryptoPayRef}
+        data-section="cryptoPay"
+        className="relative bg-white h-screen flex items-center justify-center overflow-hidden"
+      >
         <div className="absolute inset-0 w-full h-full">
-          {isPreloaded && (
-            <Spline scene="https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode" />
+          {visibleSections.has('cryptoPay') ? (
+            <Spline
+              scene="https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode"
+              onLoad={() => console.log('Crypto Pay Spline loaded')}
+            />
+          ) : (
+            <div className="w-full h-full bg-white flex items-center justify-center">
+              <div className="text-clevor-persian-blue text-xl">Loading 3D Scene...</div>
+            </div>
           )}
         </div>
 
