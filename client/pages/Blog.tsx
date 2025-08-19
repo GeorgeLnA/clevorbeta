@@ -1,5 +1,3 @@
-import { Footer } from "@/components/ui/footer";
-
 export default function Blog() {
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -15,7 +13,7 @@ export default function Blog() {
 
         <div className="grid gap-8 md:gap-12">
           {/* Blog Post 1 */}
-          <article className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200">
+          <article className="bg-clevor-grey-96 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex-1">
                 <h2 className="text-clevor-persian-blue font-fustat text-2xl md:text-3xl font-bold mb-4">
@@ -38,7 +36,7 @@ export default function Blog() {
           </article>
 
           {/* Blog Post 2 */}
-          <article className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200">
+          <article className="bg-clevor-grey-96 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex-1">
                 <h2 className="text-clevor-persian-blue font-fustat text-2xl md:text-3xl font-bold mb-4">
@@ -61,7 +59,7 @@ export default function Blog() {
           </article>
 
           {/* Blog Post 3 */}
-          <article className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200">
+          <article className="bg-clevor-grey-96 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex-1">
                 <h2 className="text-clevor-persian-blue font-fustat text-2xl md:text-3xl font-bold mb-4">
@@ -97,9 +95,6 @@ export default function Blog() {
           </button>
         </div>
       </div>
-      
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
