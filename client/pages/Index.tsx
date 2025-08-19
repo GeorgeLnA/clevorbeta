@@ -614,34 +614,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Additional Spline Section - Moved 5 sections lower */}
-      <section className="relative bg-white h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          {isPreloaded && (
-            <Spline scene="https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode" />
-          )}
-        </div>
-
-        {/* Text Overlay on Right */}
-        <div className="absolute right-32 top-1/2 transform -translate-y-1/2 z-10 max-w-md">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
-            <h2 className="text-clevor-persian-blue font-fustat text-4xl font-bold leading-tight mb-6">
-              Pay With Crypto
-              <br />
-              Anywhere <span className="text-clevor-teal">YOU</span> Like
-            </h2>
-            <p className="text-clevor-mine-shaft font-fustat text-lg font-light leading-relaxed">
-              Experience the freedom of spending your crypto assets at millions of merchants worldwide.
-              From your favorite coffee shop to online purchases, Clevor Card seamlessly converts your
-              digital assets to traditional currency at the point of sale.
-            </p>
-            <div className="mt-6 flex items-center text-clevor-emperor text-sm">
-              <div className="w-2 h-2 bg-clevor-teal rounded-full mr-3"></div>
-              <span>Accepted everywhere Mastercard & Visa are welcomed</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Technological Partners */}
       <section 
