@@ -1,5 +1,6 @@
 import Spline from "@splinetool/react-spline";
 import { HeroScrollDemo } from "@/components/ui/demo";
+import { Footer } from "@/components/ui/footer";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 export default function Index() {
@@ -123,7 +124,7 @@ export default function Index() {
           <section
             ref={heroRef}
             data-section="hero"
-            className="relative bg-clevor-grey-95 h-screen flex flex-col items-center justify-center overflow-hidden"
+            className="relative bg-white h-screen flex flex-col items-center justify-center overflow-hidden"
           >
             {/* Spline 3D Scene - Only load when visible */}
             <div className="absolute inset-0 w-full h-full">
@@ -133,7 +134,7 @@ export default function Index() {
                   onLoad={() => console.log("Hero Spline loaded")}
                 />
               ) : (
-                <div className="w-full h-full bg-clevor-grey-95 flex items-center justify-center">
+                <div className="w-full h-full bg-white flex items-center justify-center">
                   <div className="text-clevor-persian-blue text-xl">
                     Loading 3D Scene...
                   </div>
@@ -143,7 +144,7 @@ export default function Index() {
           </section>
 
           {/* Description Section */}
-          <section className="bg-white py-[120px] px-8">
+          <section className="bg-white py-[160px] px-8">
             <div className="max-w-[1140px] mx-auto text-center">
               <p className="text-clevor-persian-blue font-fustat text-2xl font-light leading-9 text-center">
                 At Clevor, we are revolutionizing how you navigate the digital
@@ -160,7 +161,7 @@ export default function Index() {
           <section
             ref={cryptoPayRef}
             data-section="cryptoPay"
-            className="relative bg-white h-screen flex items-center justify-center overflow-hidden"
+            className="relative bg-white h-screen flex items-center justify-center overflow-hidden py-[40px]"
           >
             <div className="absolute inset-0 w-full h-full">
               {visibleSections.has("cryptoPay") ? (
@@ -181,15 +182,14 @@ export default function Index() {
             <div className="absolute right-32 top-1/2 transform -translate-y-1/2 z-10 max-w-md">
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
                 <h2 className="text-clevor-persian-blue font-fustat text-4xl font-bold leading-tight mb-6">
-                  Pay With Crypto
-                  <br />
-                  Anywhere <span className="text-clevor-teal">YOU</span> Like
+                  Seamless On-Chain Transactions
                 </h2>
                 <p className="text-clevor-mine-shaft font-fustat text-lg font-light leading-relaxed">
-                  Experience the freedom of spending your crypto assets at
-                  millions of merchants worldwide. From your favorite coffee
-                  shop to online purchases, Clevor Card seamlessly converts your
-                  digital assets to traditional currency at the point of sale.
+                  Clevor Card allows users to conduct instant, self-custodied
+                  stablecoin payments, bypassing traditional banking rails.
+                  Whether for remittances or commerce, or any Web3 defi
+                  operation, users enjoy real-time settlements 24/7 all around
+                  the globe with complete financial autonomy.
                 </p>
                 <div className="mt-6 flex items-center text-clevor-emperor text-sm">
                   <div className="w-2 h-2 bg-clevor-teal rounded-full mr-3"></div>
@@ -202,200 +202,94 @@ export default function Index() {
           </section>
 
           {/* Scroll Animation Section */}
-          <section className="bg-gradient-to-br from-gray-50 to-gray-100">
+          <section className="bg-white">
             <HeroScrollDemo />
           </section>
 
-          {/* Triple Technology Section */}
-          <section
-            className="bg-clevor-grey-96 py-20 px-8"
-            style={{
-              backgroundImage: `url('https://api.builder.io/api/v1/image/assets/TEMP/1c86d321e99ccb12e3732d2dbd2f4cab2b11a5ab?width=3840')`,
-              backgroundSize: "46.875px 46.875px",
-              backgroundRepeat: "repeat",
-            }}
-          >
-            <div className="max-w-[1140px] mx-auto text-center">
-              <div className="mb-6">
-                <p className="text-clevor-cod-gray font-fustat text-2xl font-bold mb-4">
+          {/* Why Choose Clevor Cards Section */}
+          <section className="bg-white py-[120px] px-8">
+            <div className="max-w-7xl mx-auto">
+              {/* Header */}
+              <div className="text-center mb-20">
+                <p className="text-clevor-cod-gray font-fustat text-lg font-medium mb-4 tracking-wide uppercase">
                   Why Choose Clevor Cards?
                 </p>
-                <h2 className="text-clevor-persian-blue font-fustat text-[64px] font-bold leading-[76.8px] tracking-[-1px]">
+                <h2 className="text-clevor-persian-blue font-fustat text-5xl md:text-6xl font-bold leading-tight tracking-tight">
                   Triple Technology
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16">
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                 {/* Web3 Hardware Wallet */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-white rounded-full p-6 mb-7">
-                    <svg
-                      width="121"
-                      height="121"
-                      viewBox="0 0 121 121"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[120px] h-[120px]"
-                    >
-                      <path
-                        d="M120.118 32.4536H0.837494V89.4148H120.118V32.4536Z"
-                        fill="url(#pattern0_5_7)"
-                      />
-                      <defs>
-                        <pattern
-                          id="pattern0_5_7"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_5_7"
-                            transform="scale(0.000244141 0.000511247)"
-                          />
-                        </pattern>
-                      </defs>
-                    </svg>
+                <div className="group relative">
+                  <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    {/* Icon Container */}
+                    <div className="w-20 h-20 bg-gradient-to-br from-clevor-persian-blue to-clevor-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-clevor-blue-44 font-fustat text-2xl font-bold mb-4 leading-tight">
+                      Web3 Hardware Wallet
+                    </h3>
+                    <p className="text-clevor-mine-shaft font-fustat text-lg leading-relaxed">
+                      A fully integrated, replaceable wallet that allows signing transactions directly on-chain without compromising security.
+                    </p>
                   </div>
-                  <h3 className="text-clevor-blue-44 font-fustat text-2xl font-bold leading-[28.8px] mb-4">
-                    Web3 Hardware Wallet
-                  </h3>
-                  <p className="text-clevor-mine-shaft font-fustat text-xl font-light leading-[30px]">
-                    A fully integrated, replaceable wallet that allows signing
-                    transactions directly on- chain without compromising
-                    security.
-                  </p>
                 </div>
 
                 {/* Crypto Debit Card */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-white rounded-full p-10 mb-7">
-                    <svg
-                      width="90"
-                      height="91"
-                      viewBox="0 0 90 91"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[90px] h-[90px]"
-                    >
-                      <path
-                        d="M22.727 57.0685H36.0878C37.2689 57.0685 38.4017 56.5993 39.237 55.7642C40.0722 54.9289 40.5414 53.7961 40.5414 52.6149C40.5414 51.4338 40.0722 50.301 39.237 49.4657C38.4017 48.6306 37.2689 48.1613 36.0878 48.1613H22.727C21.5458 48.1613 20.413 48.6306 19.5778 49.4657C18.7426 50.301 18.2734 51.4338 18.2734 52.6149C18.2734 53.7961 18.7426 54.9289 19.5778 55.7642C20.413 56.5993 21.5458 57.0685 22.727 57.0685ZM76.1703 12.5325H13.8198C10.2763 12.5325 6.87787 13.9401 4.37222 16.4458C1.86658 18.9514 0.458928 22.3498 0.458928 25.8933V65.9757C0.458928 69.5193 1.86658 72.9177 4.37222 75.4233C6.87787 77.9289 10.2763 79.3366 13.8198 79.3366H76.1703C79.7138 79.3366 83.1121 77.9289 85.6178 75.4233C88.1235 72.9177 89.5311 69.5193 89.5311 65.9757V25.8933C89.5311 22.3498 88.1235 18.9514 85.6178 16.4458C83.1121 13.9401 79.7138 12.5325 76.1703 12.5325ZM80.6239 65.9757C80.6239 67.157 80.1547 68.2897 79.3194 69.125C78.4842 69.9601 77.3514 70.4293 76.1703 70.4293H13.8198C12.6386 70.4293 11.5058 69.9601 10.6706 69.125C9.83535 68.2897 9.36615 67.157 9.36615 65.9757V39.2541H80.6239V65.9757ZM80.6239 30.3469H9.36615V25.8933C9.36615 24.7121 9.83535 23.5793 10.6706 22.7441C11.5058 21.9089 12.6386 21.4396 13.8198 21.4396H76.1703C77.3514 21.4396 78.4842 21.9089 79.3194 22.7441C80.1547 23.5793 80.6239 24.7121 80.6239 25.8933V30.3469Z"
-                        fill="black"
-                      />
-                    </svg>
+                <div className="group relative">
+                  <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    {/* Icon Container */}
+                    <div className="w-20 h-20 bg-gradient-to-br from-clevor-persian-blue to-clevor-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                      </svg>
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-clevor-blue-44 font-fustat text-2xl font-bold mb-4 leading-tight">
+                      Crypto Debit Card
+                    </h3>
+                    <p className="text-clevor-mine-shaft font-fustat text-lg leading-relaxed">
+                      Powered by Mastercard, enabling crypto-to-fiat conversion for online payments or at any point of sale worldwide.
+                    </p>
                   </div>
-                  <h3 className="text-clevor-blue-44 font-fustat text-2xl font-bold leading-[28.8px] mb-4">
-                    Crypto Debit Card
-                  </h3>
-                  <p className="text-clevor-mine-shaft font-fustat text-xl font-light leading-[30px]">
-                    Powered by Mastercard, enabling crypto- to-fiat conversion
-                    for online payments or at any point of sale worldwide.
-                  </p>
                 </div>
 
                 {/* FIDO2 Functionality */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-white rounded-full p-6 mb-7">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/702dd2eb1fa7570e68eb15603d6b38c94d277f04?width=240"
-                      alt="FIDO2"
-                      className="w-[120px] h-[120px]"
-                    />
+                <div className="group relative">
+                  <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    {/* Icon Container */}
+                    <div className="w-20 h-20 bg-gradient-to-br from-clevor-persian-blue to-clevor-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-clevor-blue-44 font-fustat text-2xl font-bold mb-4 leading-tight">
+                      FIDO2 Functionality
+                    </h3>
+                    <p className="text-clevor-mine-shaft font-fustat text-lg leading-relaxed">
+                      Passwordless authentication for seamless and secure logins to all kinds of online services.
+                    </p>
                   </div>
-                  <h3 className="text-clevor-blue-44 font-fustat text-2xl font-bold leading-[28.8px] mb-4">
-                    FIDO2 Functionality
-                  </h3>
-                  <p className="text-clevor-mine-shaft font-fustat text-xl font-light leading-[30px]">
-                    Passwordless authentication for seamless and secure logins
-                    to all kind of online services.
-                  </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Seamless On-Chain Transactions */}
-          <section
-            className="bg-white py-[120px] px-8"
-            style={{
-              backgroundImage: `url('https://api.builder.io/api/v1/image/assets/TEMP/7f134071d1210229d80e5bc30317d36c2d9455a7?width=3840')`,
-              backgroundSize: "100% 172.868%",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "0px -224.168px",
-            }}
-          >
-            <div className="max-w-[1165px] mx-auto flex items-center gap-[50px]">
-              <div className="w-[445px] flex-shrink-0">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/41babd685dec0edeb7832304b3c47be6b2ad132f?width=841"
-                  alt="On-chain transactions animation"
-                  className="w-full h-[445px] object-cover"
-                />
-              </div>
-              <div className="flex-1 max-w-[670px] pl-[50px]">
-                <h2 className="text-clevor-persian-blue font-fustat text-5xl font-bold leading-[57.6px] tracking-[-1px] mb-6">
-                  Seamless On-Chain Transactions
-                </h2>
-                <p className="text-clevor-cod-gray font-fustat text-xl font-light leading-[30px] mb-8">
-                  Clevor Card allows users to conduct instant, self-custodied
-                  stablecoin payments, bypassing traditional banking rails.
-                  Whether for remittances or commerce, or any Web3 defi
-                  operation, users enjoy real-time settlements 24/7 all around
-                  the globe with complete financial autonomy.
-                </p>
-                <div className="flex justify-end">
-                  <img
-                    src="https://api.builder.io/api/v1/image/assets/TEMP/06620e415f91d3b190cd039b6a7000d33a7dd235?width=660"
-                    alt=""
-                    className="w-[330px] h-[5px]"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
 
-          {/* No Key Backup Required */}
-          <section
-            className="bg-white py-[150px] px-8"
-            style={{
-              backgroundImage: `url('https://api.builder.io/api/v1/image/assets/TEMP/e6342ee09fad07ce33b998edc594c1cb12cd37e1?width=3840')`,
-              backgroundSize: "48.906% 60.397%",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "0px 329.17px",
-            }}
-          >
-            <div className="max-w-[1140px] mx-auto flex items-center gap-[85px]">
-              <div className="flex-1 max-w-[570px]">
-                <h2 className="text-clevor-persian-blue font-fustat text-5xl font-bold leading-[57.6px] tracking-[-1px] mb-10">
-                  No Key Backup Required – A Revolutionary Security Feature
-                </h2>
-                <p className="text-clevor-cod-gray font-fustat text-xl font-light leading-[30px] mb-8">
-                  One of the most innovative aspects of the Clevor Card is its
-                  seamless key replacement system, powered by Cryptnox
-                  Cryptocard provider technology. If a user ever loses or
-                  replaces their card, the new card will contain an identical
-                  cryptographic key, ensuring uninterrupted access to their
-                  assets without requiring any key backup. This eliminates the
-                  risk of lost keys while maintaining full security and
-                  convenience.
-                </p>
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/06620e415f91d3b190cd039b6a7000d33a7dd235?width=660"
-                  alt=""
-                  className="w-[330px] h-[5px]"
-                />
-              </div>
-              <div className="flex-1 flex justify-center">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/686aaf06831f0315bec5999dc442f8e6cdfc9e31?width=798"
-                  alt="No Key Backup Required"
-                  className="w-[399px] h-[566px]"
-                />
-              </div>
-            </div>
-          </section>
+
+
 
           {/* How the Clevor Card Works */}
-          <section className="bg-clevor-grey-96 py-[50px] px-8">
+          <section className="bg-white py-[120px] px-8">
             <div className="max-w-[1140px] mx-auto">
               <div className="text-center mb-[70px]">
                 <h2 className="text-clevor-persian-blue font-fustat text-[64px] font-bold leading-[76.8px] tracking-[-1px]">
@@ -661,7 +555,7 @@ export default function Index() {
 
           {/* Bridging Web3 and TradFi */}
           <section
-            className="bg-clevor-grey-96 py-20 px-8"
+            className="bg-white py-[120px] px-8"
             style={{
               backgroundImage: `url('https://api.builder.io/api/v1/image/assets/TEMP/e83b54017e23eba3002a8fa960726ba51c0c33d1?width=3840')`,
               backgroundSize: "50.94px 50.94px",
@@ -692,93 +586,12 @@ export default function Index() {
             </div>
           </section>
 
-          {/* Future of Finance */}
-          <section
-            className="bg-clevor-grey-96 relative py-20 px-8"
-            style={{
-              backgroundImage: `url('https://api.builder.io/api/v1/image/assets/TEMP/0eb69e89c2081d5adeacf2d5c87c019291d4bf66?width=3840')`,
-              backgroundSize: "46.875px 46.875px",
-              backgroundRepeat: "repeat",
-            }}
-          >
-            <div className="max-w-[1140px] mx-auto text-center">
-              <h2 className="text-clevor-persian-blue font-fustat text-5xl font-bold leading-[57.6px] tracking-[-1px] mb-6">
-                The Future of Finance is Here
-              </h2>
-              <p className="text-clevor-emperor font-fustat text-2xl font-light leading-9 mb-16 max-w-[832px] mx-auto">
-                With Clevor, you hold the power of a Web3 bank in the palm of
-                your hand. A new era of financial freedom, security, and
-                convenience.
-              </p>
-              <div className="mix-blend-darken">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/ad33659c33381eac40061641b81f19d65a13ad9f?width=2280"
-                  alt="Future of Finance visualization"
-                  className="w-full max-w-[1140px] h-[855px] mx-auto"
-                />
-              </div>
-            </div>
-          </section>
+          {/* Footer */}
+          <Footer />
 
-          {/* Technological Partners */}
-          <section
-            className="bg-clevor-mercury py-20 px-8"
-            style={{
-              backgroundImage: `url('https://api.builder.io/api/v1/image/assets/TEMP/0c81b8fa3a5aa54fef7fc2ec20b525ca1a88f429?width=3840')`,
-              backgroundSize: "100% 153.489%",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "0px -119.817px",
-            }}
-          >
-            <div className="max-w-[1140px] mx-auto text-center">
-              <h2 className="text-clevor-persian-blue font-fustat text-5xl font-bold leading-[57.6px] tracking-[-1px] mb-16">
-                Technological Partners
-              </h2>
 
-              <div className="flex justify-center gap-11 max-w-[960px] mx-auto">
-                {/* Cryptnox */}
-                <div
-                  className="flex-1 min-h-[200px] rounded-3xl px-[10px] py-[36px] flex flex-col justify-center items-center gap-[10px]"
-                  style={{
-                    background: `url('https://api.builder.io/api/v1/image/assets/TEMP/2c2a04899e4fffcc81f278eeb38b2de220e957db?width=846') lightgray -188.5px -90.005px / 189.125% 190% no-repeat, #2C14CC`,
-                  }}
-                >
-                  <div className="max-w-[423px]">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/4fa6ff23512e212e3fe601810bfab1872183f715?width=403"
-                      alt="Cryptnox"
-                      className="w-[202px] h-[38px] mx-auto"
-                    />
-                  </div>
-                  <div className="max-w-[423px]">
-                    <p className="text-white text-center font-roboto text-xl leading-[30px]">
-                      Integrating <span className="font-bold">C-WAAS</span>{" "}
-                      technology
-                    </p>
-                  </div>
-                  <div className="max-w-[423px]">
-                    <a
-                      href="#"
-                      className="inline-block bg-clevor-blue-44 text-clevor-mercury text-center font-roboto text-[15px] font-medium leading-[15px] px-6 py-3 rounded-[3px]"
-                    >
-                      What is C-WAAS? Click Here
-                    </a>
-                  </div>
-                </div>
 
-                {/* AWS */}
-                <div className="flex-1 min-h-[200px] bg-clevor-cod-gray rounded-3xl px-[10px] py-[51px] flex flex-col justify-center items-center">
-                  <div className="max-w-[423px]">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/bbe4465913c627c43612fa3692dcfff811f01768?width=322"
-                      alt="AWS"
-                      className="w-[161px] h-[98px] mx-auto"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+
         </div>
       )}
     </>

@@ -4,7 +4,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function HeroScrollDemo() {
   return (
-    <div className="flex flex-col overflow-hidden pb-[200px] pt-[200px]">
+    <div className="flex flex-col overflow-hidden pb-0 pt-0">
       <div className="max-w-[1720px] mx-auto flex items-center gap-[100px] px-8">
         {/* Left Side - Text Content */}
         <div className="flex-1 max-w-[682px]">

@@ -4,7 +4,7 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/5 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-6xl mx-auto px-6 py-3">
         <nav className="flex items-center justify-center relative">
           {/* Logo - positioned absolutely to the left */}
