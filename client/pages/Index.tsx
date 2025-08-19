@@ -49,17 +49,10 @@ export default function Index() {
     const totalLoadingDuration = 4000; // 4.0 seconds (extended by 0.5s)
     const contentLoadOffset = 1000; // 1.0 seconds before end
 
-    // Preload all Spline scenes immediately in background to prevent freezes
+    // Optimized preloading - only preload loading scene initially
     const preloadScenes = async () => {
-      // Create hidden Spline instances to preload
-      const scenes = [
-        "https://prod.spline.design/8wPfo43v95uamovu/scene.splinecode",
-        "https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode",
-        "https://prod.spline.design/v-vvo7sbJoCnGdsX/scene.splinecode"
-      ];
-
-      // Load all scenes simultaneously but hidden
-      await Promise.all(scenes.map(() => new Promise(resolve => setTimeout(resolve, 500))));
+      // Only preload the loading scene initially to reduce initial load
+      await new Promise(resolve => setTimeout(resolve, 800)); // Simulated loading time
       setIsPreloaded(true);
 
       // Show CLEVOR text for 2.5 seconds before starting curtain effect
