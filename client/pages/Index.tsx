@@ -30,7 +30,7 @@ export default function Index() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '100px', // Start loading 100px before section comes into view
+      rootMargin: '200px', // Start loading 200px before section comes into view
       threshold: 0.1
     });
 
