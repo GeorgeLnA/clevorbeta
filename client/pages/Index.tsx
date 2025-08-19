@@ -66,7 +66,8 @@ export default function Index() {
         </div>
       )}
       
-      <div className="min-h-screen bg-white">
+      {showMainContent && (
+        <div className="min-h-screen bg-white">
         {/* Progressive loading - preload all scenes to prevent freezes */}
         <div className="fixed inset-0 z-[-1] opacity-0 pointer-events-none">
           {/* Preload all scenes simultaneously to eliminate freezes */}
@@ -684,7 +685,8 @@ export default function Index() {
           </div>
         </div>
       </section>
-    </div>
+        </div>
+      )}
     </>
   );
 }
