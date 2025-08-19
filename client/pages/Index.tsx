@@ -30,11 +30,11 @@ export default function Index() {
       await Promise.all(scenes.map(() => new Promise(resolve => setTimeout(resolve, 500))));
       setIsPreloaded(true);
 
-      // Show CLEVOR text for 2 seconds before starting curtain effect
+      // Show CLEVOR text for 2.5 seconds before starting curtain effect
       setTimeout(() => {
         setShowCurtain(true);
         setTimeout(() => setShowLoading(false), 1000); // Hide loading after curtain animation
-      }, 2000);
+      }, 2500);
     };
 
     // Start loading main content 0.3s before loading animation ends
