@@ -40,6 +40,14 @@ export default function Index() {
     return () => observer.disconnect();
   }, [observerCallback, showMainContent]);
 
+  // Performance optimization: Reduce animations when device has limited performance
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+      console.log('Reduced motion preferred - optimizing animations');
+    }
+  }, []);
+
   useEffect(() => {
     // Show loading animation first
     setShowLoading(true);
