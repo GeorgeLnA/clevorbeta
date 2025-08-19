@@ -12,10 +12,10 @@ export default function Index() {
     // Show loading animation first
     setShowLoading(true);
 
-    // Total loading animation duration: 3.5s (500ms preload + 2s text + 1s curtain)
-    // Main content should load 0.3s before end (at 3.2s)
-    const totalLoadingDuration = 3500; // 3.5 seconds
-    const contentLoadOffset = 300; // 0.3 seconds before end
+    // Total loading animation duration: 4.0s (500ms preload + 2.5s text + 1s curtain)
+    // Main content should load 0.7s before end (at 3.3s)
+    const totalLoadingDuration = 4000; // 4.0 seconds (extended by 0.5s)
+    const contentLoadOffset = 700; // 0.7 seconds before end
 
     // Preload all Spline scenes immediately in background to prevent freezes
     const preloadScenes = async () => {
