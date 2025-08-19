@@ -6,11 +6,17 @@ export default function Index() {
   const [isPreloaded, setIsPreloaded] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
   const [showCurtain, setShowCurtain] = useState(false);
+  const [showMainContent, setShowMainContent] = useState(false);
 
   useEffect(() => {
     // Show loading animation first
     setShowLoading(true);
-    
+
+    // Total loading animation duration: 3.5s (500ms preload + 2s text + 1s curtain)
+    // Main content should load 0.3s before end (at 3.2s)
+    const totalLoadingDuration = 3500; // 3.5 seconds
+    const contentLoadOffset = 300; // 0.3 seconds before end
+
     // Preload all Spline scenes immediately in background to prevent freezes
     const preloadScenes = async () => {
       // Create hidden Spline instances to preload
@@ -19,18 +25,23 @@ export default function Index() {
         "https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode",
         "https://prod.spline.design/v-vvo7sbJoCnGdsX/scene.splinecode"
       ];
-      
+
       // Load all scenes simultaneously but hidden
       await Promise.all(scenes.map(() => new Promise(resolve => setTimeout(resolve, 500))));
       setIsPreloaded(true);
-      
+
       // Show CLEVOR text for 2 seconds before starting curtain effect
       setTimeout(() => {
         setShowCurtain(true);
         setTimeout(() => setShowLoading(false), 1000); // Hide loading after curtain animation
       }, 2000);
     };
-    
+
+    // Start loading main content 0.3s before loading animation ends
+    setTimeout(() => {
+      setShowMainContent(true);
+    }, totalLoadingDuration - contentLoadOffset); // 3200ms
+
     preloadScenes();
   }, []);
 
