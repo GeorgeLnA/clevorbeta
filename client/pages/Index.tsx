@@ -9,6 +9,8 @@ export default function Index() {
   const [showCurtain, setShowCurtain] = useState(false);
   const [showMainContent, setShowMainContent] = useState(false);
   const [visibleSections, setVisibleSections] = useState(new Set());
+  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [cryptoPayLoaded, setCryptoPayLoaded] = useState(false);
 
   const heroRef = useRef(null);
   const cryptoPayRef = useRef(null);
@@ -33,8 +35,8 @@ export default function Index() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: "200px", // Start loading 200px before section comes into view
-      threshold: 0.1,
+      rootMargin: "1000px", // Preload much earlier to handle fast scrolling
+      threshold: 0,
     });
 
     if (heroRef.current) observer.observe(heroRef.current);
@@ -76,6 +78,9 @@ export default function Index() {
     // Start loading main content 0.3s before loading animation ends
     setTimeout(() => {
       setShowMainContent(true);
+      // Preload both hero and crypto pay scenes immediately when main content loads
+      setHeroLoaded(true);
+      setCryptoPayLoaded(true);
     }, totalLoadingDuration - contentLoadOffset); // 3200ms
 
     preloadScenes();
@@ -126,12 +131,15 @@ export default function Index() {
             data-section="hero"
             className="relative bg-white h-screen flex flex-col items-center justify-center overflow-hidden"
           >
-            {/* Spline 3D Scene - Only load when visible */}
+            {/* Spline 3D Scene - Preload early and keep mounted once loaded */}
             <div className="absolute inset-0 w-full h-full">
-              {visibleSections.has("hero") ? (
+              {heroLoaded || visibleSections.has("hero") ? (
                 <Spline
                   scene="https://prod.spline.design/8wPfo43v95uamovu/scene.splinecode"
-                  onLoad={() => console.log("Hero Spline loaded")}
+                  onLoad={() => {
+                    setHeroLoaded(true);
+                    console.log("Hero Spline loaded");
+                  }}
                 />
               ) : (
                 <div className="w-full h-full bg-white flex items-center justify-center">
@@ -164,10 +172,13 @@ export default function Index() {
             className="relative bg-white h-screen flex items-center justify-center overflow-hidden"
           >
             <div className="absolute inset-0 w-full h-full">
-              {visibleSections.has("cryptoPay") ? (
+              {cryptoPayLoaded || visibleSections.has("cryptoPay") ? (
                 <Spline
                   scene="https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode"
-                  onLoad={() => console.log("Crypto Pay Spline loaded")}
+                  onLoad={() => {
+                    setCryptoPayLoaded(true);
+                    console.log("Crypto Pay Spline loaded");
+                  }}
                 />
               ) : (
                 <div className="w-full h-full bg-white flex items-center justify-center">
