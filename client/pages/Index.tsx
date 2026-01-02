@@ -9,8 +9,6 @@ export default function Index() {
   const [showCurtain, setShowCurtain] = useState(false);
   const [showMainContent, setShowMainContent] = useState(false);
   const [visibleSections, setVisibleSections] = useState(new Set());
-  const [heroLoaded, setHeroLoaded] = useState(false);
-  const [cryptoPayLoaded, setCryptoPayLoaded] = useState(false);
 
   const heroRef = useRef(null);
   const cryptoPayRef = useRef(null);
@@ -35,8 +33,8 @@ export default function Index() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: "1000px", // Preload much earlier to handle fast scrolling
-      threshold: 0,
+      rootMargin: "200px", // Start loading 200px before section comes into view
+      threshold: 0.1,
     });
 
     if (heroRef.current) observer.observe(heroRef.current);
@@ -68,7 +66,7 @@ export default function Index() {
       await new Promise((resolve) => setTimeout(resolve, 800)); // Simulated loading time
       setIsPreloaded(true);
 
-      // Show CLEVOR text for 2.5 seconds before starting curtain effect
+      // Show VISA text for 2.5 seconds before starting curtain effect
       setTimeout(() => {
         setShowCurtain(true);
         setTimeout(() => setShowLoading(false), 1000); // Hide loading after curtain animation
@@ -78,9 +76,6 @@ export default function Index() {
     // Start loading main content 0.3s before loading animation ends
     setTimeout(() => {
       setShowMainContent(true);
-      // Preload both hero and crypto pay scenes immediately when main content loads
-      setHeroLoaded(true);
-      setCryptoPayLoaded(true);
     }, totalLoadingDuration - contentLoadOffset); // 3200ms
 
     preloadScenes();
@@ -102,11 +97,11 @@ export default function Index() {
               }
             >
               <Spline scene="https://prod.spline.design/v-vvo7sbJoCnGdsX/scene.splinecode" />
-              {/* CLEVOR Text Overlay - appears after loading */}
+              {/* VISA Text Overlay - appears after loading */}
               {isPreloaded && (
                 <div className="absolute inset-0 flex items-center justify-center z-10 animate-in fade-in duration-1000">
                   <h1 className="text-7xl md:text-[9.5rem] font-bold text-white tracking-wider ml-4 mt-4">
-                    CLEVOR
+                    VISA
                   </h1>
                 </div>
               )}
@@ -131,15 +126,12 @@ export default function Index() {
             data-section="hero"
             className="relative bg-white h-screen flex flex-col items-center justify-center overflow-hidden"
           >
-            {/* Spline 3D Scene - Preload early and keep mounted once loaded */}
+            {/* Spline 3D Scene - Only load when visible */}
             <div className="absolute inset-0 w-full h-full">
-              {heroLoaded || visibleSections.has("hero") ? (
+              {visibleSections.has("hero") ? (
                 <Spline
                   scene="https://prod.spline.design/8wPfo43v95uamovu/scene.splinecode"
-                  onLoad={() => {
-                    setHeroLoaded(true);
-                    console.log("Hero Spline loaded");
-                  }}
+                  onLoad={() => console.log("Hero Spline loaded")}
                 />
               ) : (
                 <div className="w-full h-full bg-white flex items-center justify-center">
@@ -155,7 +147,7 @@ export default function Index() {
           <section className="bg-white py-[120px] px-8">
             <div className="max-w-[1140px] mx-auto text-center">
               <p className="text-clevor-persian-blue font-fustat text-2xl font-light leading-9 text-center">
-                At Clevor, we are revolutionizing how you navigate the digital
+                At VISA, we are revolutionizing how you navigate the digital
                 economy. Our advanced smart cards bring the future of finance to
                 your fingertips. Designed specifically for the Web3 era, our
                 card combines three powerful technologies in one: a hardware
@@ -172,13 +164,10 @@ export default function Index() {
             className="relative bg-white h-screen flex items-center justify-center overflow-hidden"
           >
             <div className="absolute inset-0 w-full h-full">
-              {cryptoPayLoaded || visibleSections.has("cryptoPay") ? (
+              {visibleSections.has("cryptoPay") ? (
                 <Spline
                   scene="https://prod.spline.design/1YsdvfQLzvm2flZ2/scene.splinecode"
-                  onLoad={() => {
-                    setCryptoPayLoaded(true);
-                    console.log("Crypto Pay Spline loaded");
-                  }}
+                  onLoad={() => console.log("Crypto Pay Spline loaded")}
                 />
               ) : (
                 <div className="w-full h-full bg-white flex items-center justify-center">
@@ -196,7 +185,7 @@ export default function Index() {
                   Seamless On-Chain Transactions
                 </h2>
                 <p className="text-clevor-mine-shaft font-fustat text-lg font-light leading-relaxed">
-                  Clevor Card allows users to conduct instant, self-custodied
+                  VISA Card allows users to conduct instant, self-custodied
                   stablecoin payments, bypassing traditional banking rails.
                   Whether for remittances or commerce, or any Web3 defi
                   operation, users enjoy real-time settlements 24/7 all around
@@ -217,13 +206,13 @@ export default function Index() {
             <HeroScrollDemo />
           </section>
 
-          {/* Why Choose Clevor Cards Section */}
+          {/* Why Choose VISA Cards Section */}
           <section className="bg-white py-24 px-8">
             <div className="max-w-7xl mx-auto">
               {/* Header */}
               <div className="text-center mb-20">
                 <p className="text-clevor-cod-gray font-fustat text-lg font-medium mb-4 tracking-wide uppercase">
-                  Why Choose Clevor Cards?
+                  Why Choose VISA Cards?
                 </p>
                 <h2 className="text-clevor-persian-blue font-fustat text-5xl md:text-6xl font-bold leading-tight tracking-tight">
                   Triple Technology
@@ -299,12 +288,12 @@ export default function Index() {
 
 
 
-          {/* How the Clevor Card Works */}
+          {/* How the VISA Card Works */}
           <section className="bg-white py-24 px-8">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-20">
                 <h2 className="text-clevor-persian-blue font-fustat text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-                  How the Clevor Card Works
+                  How the VISA Card Works
                 </h2>
               </div>
 
@@ -410,17 +399,17 @@ export default function Index() {
           {/* Bridging Web3 and TradFi */}
           <section className="bg-white py-20 px-8">
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 gap-12 items-center">
                 {/* Left: Copy */}
                 <div>
                   <p className="text-clevor-cod-gray font-fustat text-sm tracking-wider uppercase mb-4">
                     Bridge Web3 ↔ TradFi
                   </p>
                   <h2 className="text-clevor-persian-blue font-fustat text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
-                    Bridging Web3 and TradFi
-                  </h2>
+                  Bridging Web3 and TradFi
+                </h2>
                   <p className="text-clevor-emperor font-fustat text-lg leading-relaxed mb-8">
-                    The Clevor Card connects decentralized finance with everyday spending. Hold and manage
+                    The VISA Card connects decentralized finance with everyday spending. Hold and manage
                     crypto on-chain, then pay like a traditional card anywhere Mastercard or Visa is
                     accepted—without compromising self-custody or security.
                   </p>
@@ -441,33 +430,8 @@ export default function Index() {
                       <span className="mt-1 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-clevor-persian-blue to-clevor-teal"></span>
                       <p className="text-clevor-mine-shaft font-fustat text-base leading-relaxed">
                         Spend globally wherever major cards are accepted.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: Visual */}
-                <div className="relative">
-                  <div className="absolute -inset-6 bg-gradient-to-br from-clevor-persian-blue/10 to-clevor-teal/10 rounded-[2.5rem] blur-2xl"></div>
-                  <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/1a46e4405b1dc64c2680ae7251bd47b91f6915cf?width=1600"
-                      alt="Web3 and TradFi visual"
-                      className="w-full h-auto"
-                    />
-                    <div className="absolute inset-x-6 bottom-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-4">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="px-3 py-1 rounded-full text-sm font-medium text-clevor-persian-blue bg-clevor-persian-blue/10">
-                          On-chain → Fiat
-                        </span>
-                        <span className="px-3 py-1 rounded-full text-sm font-medium text-clevor-teal bg-clevor-teal/10">
-                          FIDO2
-                        </span>
-                        <span className="px-3 py-1 rounded-full text-sm font-medium text-clevor-emperor bg-gray-100">
-                          Global Acceptance
-                        </span>
-                      </div>
-                    </div>
+                </p>
+              </div>
                   </div>
                 </div>
               </div>

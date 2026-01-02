@@ -9,15 +9,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Logo & Description */}
+          {/* Description */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-4">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/feab8a74b7e886ffc0fa9cb268d85f6de2b58fca?width=860"
-                alt="Clevor"
-                className="h-6 w-auto"
-              />
-            </div>
             <p className="text-clevor-cod-gray text-sm leading-relaxed max-w-md">
               Revolutionizing how you navigate the digital economy. Advanced smart cards bringing the future of finance to your fingertips.
             </p>
@@ -105,7 +98,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-clevor-grey-96">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6 text-sm text-clevor-cod-gray">
-              <span>&copy; {currentYear} Clevor. All rights reserved.</span>
+              <span>&copy; {currentYear} VISA. All rights reserved.</span>
               <span className="hidden md:inline">•</span>
               <a href="#" className="hover:text-clevor-persian-blue transition-colors duration-200">
                 Privacy Policy
