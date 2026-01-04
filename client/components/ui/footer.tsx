@@ -98,7 +98,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-clevor-grey-96">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6 text-sm text-clevor-cod-gray">
-              <span>&copy; {currentYear} VISA. All rights reserved.</span>
+              <span>&copy; {currentYear} cardz. All rights reserved.</span>
               <span className="hidden md:inline">•</span>
               <a href="#" className="hover:text-clevor-persian-blue transition-colors duration-200">
                 Privacy Policy

@@ -66,7 +66,7 @@ export default function Index() {
       await new Promise((resolve) => setTimeout(resolve, 800)); // Simulated loading time
       setIsPreloaded(true);
 
-      // Show VISA text for 2.5 seconds before starting curtain effect
+      // Show cardz text for 2.5 seconds before starting curtain effect
       setTimeout(() => {
         setShowCurtain(true);
         setTimeout(() => setShowLoading(false), 1000); // Hide loading after curtain animation
@@ -97,11 +97,11 @@ export default function Index() {
               }
             >
               <Spline scene="https://prod.spline.design/v-vvo7sbJoCnGdsX/scene.splinecode" />
-              {/* VISA Text Overlay - appears after loading */}
+              {/* cardz Text Overlay - appears after loading */}
               {isPreloaded && (
                 <div className="absolute inset-0 flex items-center justify-center z-10 animate-in fade-in duration-1000">
                   <h1 className="text-7xl md:text-[9.5rem] font-bold text-white tracking-wider ml-4 mt-4">
-                    VISA
+                    cardz
                   </h1>
                 </div>
               )}
@@ -147,7 +147,7 @@ export default function Index() {
           <section className="bg-white py-[120px] px-8">
             <div className="max-w-[1140px] mx-auto text-center">
               <p className="text-clevor-persian-blue font-fustat text-2xl font-light leading-9 text-center">
-                At VISA, we are revolutionizing how you navigate the digital
+                At cardz, we are revolutionizing how you navigate the digital
                 economy. Our advanced smart cards bring the future of finance to
                 your fingertips. Designed specifically for the Web3 era, our
                 card combines three powerful technologies in one: a hardware
@@ -185,7 +185,7 @@ export default function Index() {
                   Seamless On-Chain Transactions
                 </h2>
                 <p className="text-clevor-mine-shaft font-fustat text-lg font-light leading-relaxed">
-                  VISA Card allows users to conduct instant, self-custodied
+                  cardz Card allows users to conduct instant, self-custodied
                   stablecoin payments, bypassing traditional banking rails.
                   Whether for remittances or commerce, or any Web3 defi
                   operation, users enjoy real-time settlements 24/7 all around
@@ -206,13 +206,13 @@ export default function Index() {
             <HeroScrollDemo />
           </section>
 
-          {/* Why Choose VISA Cards Section */}
+          {/* Why Choose cardz Cards Section */}
           <section className="bg-white py-24 px-8">
             <div className="max-w-7xl mx-auto">
               {/* Header */}
               <div className="text-center mb-20">
                 <p className="text-clevor-cod-gray font-fustat text-lg font-medium mb-4 tracking-wide uppercase">
-                  Why Choose VISA Cards?
+                  Why Choose cardz Cards?
                 </p>
                 <h2 className="text-clevor-persian-blue font-fustat text-5xl md:text-6xl font-bold leading-tight tracking-tight">
                   Triple Technology
@@ -288,12 +288,12 @@ export default function Index() {
 
 
 
-          {/* How the VISA Card Works */}
+          {/* How the cardz Card Works */}
           <section className="bg-white py-24 px-8">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-20">
                 <h2 className="text-clevor-persian-blue font-fustat text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-                  How the VISA Card Works
+                  How the cardz Card Works
                 </h2>
               </div>
 
@@ -409,7 +409,7 @@ export default function Index() {
                   Bridging Web3 and TradFi
                 </h2>
                   <p className="text-clevor-emperor font-fustat text-lg leading-relaxed mb-8">
-                    The VISA Card connects decentralized finance with everyday spending. Hold and manage
+                    The cardz Card connects decentralized finance with everyday spending. Hold and manage
                     crypto on-chain, then pay like a traditional card anywhere Mastercard or Visa is
                     accepted—without compromising self-custody or security.
                   </p>

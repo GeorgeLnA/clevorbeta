@@ -23,7 +23,7 @@ export function HeroScrollDemo() {
               }}
             >
               <p className="text-clevor-cod-gray font-fustat text-xl font-light leading-[30px]">
-                VISA Card is more than just a payment tool—it is a self-custodial
+                cardz Card is more than just a payment tool—it is a self-custodial
                 hardware wallet that enables 100% on-chain transactions. Whether
                 you are managing your digital assets, making instant stablecoin
                 cross-border payments without using the traditional banking system,
