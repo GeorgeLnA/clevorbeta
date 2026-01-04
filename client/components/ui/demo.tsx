@@ -4,7 +4,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function HeroScrollDemo() {
   return (
-    <div className="flex flex-col overflow-hidden pb-[200px] pt-[200px]">
+    <div className="flex flex-col overflow-hidden pb-0 pt-0">
       <div className="max-w-[1720px] mx-auto flex items-center gap-[100px] px-8">
         {/* Left Side - Text Content */}
         <div className="flex-1 max-w-[682px]">
@@ -23,7 +23,7 @@ export function HeroScrollDemo() {
               }}
             >
               <p className="text-clevor-cod-gray font-fustat text-xl font-light leading-[30px]">
-                Clevor Card is more than just a payment tool—it is a self-custodial
+                cardz Card is more than just a payment tool—it is a self-custodial
                 hardware wallet that enables 100% on-chain transactions. Whether
                 you are managing your digital assets, making instant stablecoin
                 cross-border payments without using the traditional banking system,
@@ -40,12 +40,9 @@ export function HeroScrollDemo() {
           <ContainerScroll
             titleComponent={null}
           >
-            <img
-              src="/222.png"
-              alt="Clevor App Interface"
-              className="w-full h-full object-cover rounded-2xl"
-              draggable={false}
-            />
+            <div className="w-full h-full bg-gray-100 rounded-2xl flex items-center justify-center">
+              <span className="text-gray-400">Image removed</span>
+            </div>
           </ContainerScroll>
         </div>
       </div>
